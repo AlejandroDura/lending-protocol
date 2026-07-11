@@ -39,4 +39,19 @@ contract LendingPoolTest is Test {
         uint256 expectedValue = 2.24e18;
         assertEq(HealthFactor.calculateHealthFactor(debtValue, collateralValue, liquidationThreshold), expectedValue);
     }
+
+    function test_healthFactorPeriodicDecimals() public {
+        /**
+         * Deposit 10 ether a 2000USD/ETH -> 20_000 USDC en ETH
+         * Borrow  12_000 USDC -> 12_000 USD en USDC
+         * HF = 0.8 * 20_000 / 12_000 = 16_000 / 12_000 = 1.3333333.... OK!
+         */
+
+        uint256 collateralValue = 20_000e18;
+        uint256 debtValue = 12_000e18;
+        uint256 liquidationThreshold = 8000; //80%
+
+        uint256 expectedValue = 1333333333333333333;
+        assertEq(HealthFactor.calculateHealthFactor(debtValue, collateralValue, liquidationThreshold), expectedValue);
+    }
 }

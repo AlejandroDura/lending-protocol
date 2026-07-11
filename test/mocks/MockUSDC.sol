@@ -26,4 +26,8 @@ contract MockUSDC is ERC20 {
     function approveInternal(address owner, address spender, uint256 value) public {
         _approve(owner, spender, value);
     }
+
+    function decimals() public view override returns (uint8) {
+        return 6;
+    }
 }

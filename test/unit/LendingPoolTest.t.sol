@@ -5,10 +5,14 @@ import {Test} from "forge-std/Test.sol";
 import {LendingPool} from "src/LendingPool.sol";
 import {PriceOracle} from "src/PriceOracle.sol";
 import {DepositToken} from "src/tokens/DepositToken.sol";
-import {MockUSDC} from "src/tokens/MockUSDC.sol";
+import {MockUSDC} from "test/mocks/MockUSDC.sol";
+import {MockAggregatorV3Interface} from "test/mocks/MockAggregatorV3Interface.sol";
 
 contract LendingPoolTest is Test {
     address user;
+
+    address[] public tokens;
+    address[] public priceFeeds;
 
     LendingPool public lendingPool;
     DepositToken public depositToken;
@@ -19,15 +23,22 @@ contract LendingPoolTest is Test {
         user = makeAddr("user");
         vm.deal(user, 1_000_000 ether);
 
-        depositToken = new DepositToken();
-        priceOracle = new PriceOracle();
         usdcToken = new MockUSDC("USDC", "USDC", address(this), 0);
+
+        tokens.push(address(0));
+        priceFeeds.push(address(new MockAggregatorV3Interface(8, 2000e8)));
+
+        tokens.push(address(usdcToken));
+        priceFeeds.push(address(new MockAggregatorV3Interface(8, 1e8)));
+
+        depositToken = new DepositToken();
+        priceOracle = new PriceOracle(tokens, priceFeeds);
         lendingPool = new LendingPool(address(depositToken), address(usdcToken), address(priceOracle));
 
         usdcToken.mint(address(lendingPool), 10_000e6);
     }
 
-    modifier depostiCollateral(address _user, uint256 _amount) {
+    modifier depositCollateral(address _user, uint256 _amount) {
         vm.prank(_user);
         lendingPool.depositCollateral{value: _amount}();
         _;
@@ -40,10 +51,54 @@ contract LendingPoolTest is Test {
         assertEq(lendingPool.getCollateral(user), 10 ether);
     }
 
-    function test_withdrawCollateral() public depostiCollateral(user, 10 ether) {
+    function test_borrow() public depositCollateral(user, 10 ether) {
+        vm.prank(user);
+        lendingPool.borrow(2 ether);
+
+        assertEq(lendingPool.getDebt(user), 2 ether);
+    }
+
+    function test_withdrawCollateral() public depositCollateral(user, 10 ether) {
         vm.prank(user);
         lendingPool.withdrawCollateral(10 ether);
 
         assertEq(lendingPool.getCollateral(user), 0);
+    }
+
+    function test_getUsdValue() public {
+        uint256 amount = 10 ether;
+        uint256 price = 2000e18;
+        uint256 expectedValue = amount * price / 1e18;
+
+        assertEq(lendingPool.getUsdValue(address(0), amount), expectedValue);
+    }
+
+    function test_healthFactorNotOK() public depositCollateral(user, 10 ether) {
+        /**
+         * Deposit 10 ether a 2000USD/ETH -> 20_000 USDC en ETH
+         * Borrow  17_000 USDC -> 17_000 USD en USDC
+         * HF = 0.8 * 20_000 / 17_000 = 16_000 / 17_000 = 0.941176.... NOT OK!
+         */
+
+        vm.prank(user);
+        lendingPool.borrow(17_000e6);
+
+        vm.expectRevert(LendingPool.LendingPool__HealthFactorBroken.selector);
+        vm.prank(user);
+        lendingPool.checkHealthFactor();
+    }
+
+    function test_healthFactorOK() public depositCollateral(user, 10 ether) {
+        /**
+         * Deposit 10 ether a 2000USD/ETH -> 20_000 USDC en ETH
+         * Borrow  12_000 USDC -> 12_000 USD en USDC
+         * HF = 0.8 * 20_000 / 12_000 = 16_000 / 12_000 = 1.3333333.... OK!
+         */
+
+        vm.prank(user);
+        lendingPool.borrow(12_000e6);
+
+        vm.prank(user);
+        lendingPool.checkHealthFactor();
     }
 }
