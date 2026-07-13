@@ -28,7 +28,7 @@ contract PriceOracle {
      * @dev Returns the token price in 8 decimals
      * @param _token the token address
      */
-    function getPrice(address _token) external returns (int256) {
+    function getPrice(address _token) external view returns (int256) {
         address priceOracle = tokenToPriceOracle[_token];
 
         if (priceOracle == address(0)) {
@@ -42,6 +42,7 @@ contract PriceOracle {
 
     function _staleCheck(address _priceOracle)
         private
+        view
         returns (uint80 roundId, int256 answer, uint256 startedAt, uint256 updatedAt, uint80 answeredInRound)
     {
         (roundId, answer, startedAt, updatedAt, answeredInRound) = AggregatorV3Interface(_priceOracle).latestRoundData();

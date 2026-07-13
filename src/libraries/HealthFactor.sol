@@ -15,6 +15,10 @@ library HealthFactor {
         uint256 _collateralValueInUsd,
         uint256 _liquidationThreshold
     ) internal pure returns (uint256) {
+        if (_debtValueInUsd == 0) {
+            return type(uint256).max;
+        }
+
         return ((_collateralValueInUsd * _liquidationThreshold) / 10_000) * 1e18 / _debtValueInUsd;
 
         //o tambien: return (_collateralValueInUsd * _liquidationThreshold * 1e18) / (_debtValueInUsd * 10_000);
