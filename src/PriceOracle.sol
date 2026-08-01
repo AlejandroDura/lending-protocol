@@ -40,6 +40,10 @@ contract PriceOracle {
         return answer;
     }
 
+    function getPriceOracle(address _token) public view returns (address) {
+        return tokenToPriceOracle[_token];
+    }
+
     function _staleCheck(address _priceOracle)
         private
         view

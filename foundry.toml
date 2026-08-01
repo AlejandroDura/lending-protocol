@@ -8,4 +8,13 @@ remappings = [
     "@chainlink/contracts/=lib/chainlink-brownie-contracts/contracts",
 ]
 
+[fuzz]
+seed = "0x1234"
+runs = 10000
+
+[invariant]
+runs = 256
+depth = 256
+fail_on_revert = true
+
 # See more config options https://github.com/foundry-rs/foundry/blob/master/crates/config/README.md#all-options

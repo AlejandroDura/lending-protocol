@@ -1,0 +1,1705 @@
+No files changed, compilation skipped
+
+Ran 1 test for test/fuzz/Invariants.t.sol:Invariants
+[PASS] invariant_prueba() (runs: 256, calls: 65536, reverts: 0)
+
+╭----------+-------------------+-------+---------+----------╮
+| Contract | Selector          | Calls | Reverts | Discards |
++===========================================================+
+| Handler  | borrow            | 32602 | 0       | 0        |
+|----------+-------------------+-------+---------+----------|
+| Handler  | depositCollateral | 32934 | 0       | 0        |
+╰----------+-------------------+-------+---------+----------╯
+
+Traces:
+  [13543] Handler::borrow(6843558793535968 [6.843e15], 316208283991717641370345023844673707901642270258978409151095136809748157 [3.162e71])
+    ├─ [2851] LendingPool::getCollateral(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a]) [staticcall]
+    │   └─ ← [Return] 0
+    └─ ← [Stop]
+
+  [44390] Handler::depositCollateral(5000, 835)
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 5000}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 5000)
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [44390] Handler::depositCollateral(3770, 10172 [1.017e4])
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 3770}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 3770)
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [45621] Handler::depositCollateral(115792089237316195423570985008687907853269984665640564039457584007913129639933 [1.157e77], 115792089237316195423570985008687907853269984665640564039457584007913129639934 [1.157e77])
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 9999999999999999998}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 9999999999999999998 [9.999e18])
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [45861] Handler::depositCollateral(132004085585115263044546753264746 [1.32e32], 18121046376601315834481011777793681608536572389441049961669019209263346534839 [1.812e76])
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 5276231754903217235}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 5276231754903217235 [5.276e18])
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [45003] Handler::depositCollateral(0, 6339)
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 1000}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 1000)
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [13543] Handler::borrow(5, 4947590479113136515230694752818998786 [4.947e36])
+    ├─ [2851] LendingPool::getCollateral(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a]) [staticcall]
+    │   └─ ← [Return] 0
+    └─ ← [Stop]
+
+  [45861] Handler::depositCollateral(30008133441382319585279192075723 [3e31], 7931)
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 2322583091722869585}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 2322583091722869585 [2.322e18])
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [45861] Handler::depositCollateral(6893386588369311099774177748292571896182002742246704802257791666812 [6.893e66], 510909530 [5.109e8])
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 9978815233405935984}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 9978815233405935984 [9.978e18])
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [45861] Handler::depositCollateral(22464853930381203809897756134523488390181641575936 [2.246e49], 1323956189940864975329409308632667631728096699846285508384767680917 [1.323e66])
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 5973198434353157976}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 5973198434353157976 [5.973e18])
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [44390] Handler::depositCollateral(201972042 [2.019e8], 115792089237316195423570985008687907853269984665640564039457584007913129639932 [1.157e77])
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 201972042}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 201972042 [2.019e8])
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [13543] Handler::borrow(1558, 1000000000000000000 [1e18])
+    ├─ [2851] LendingPool::getCollateral(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a]) [staticcall]
+    │   └─ ← [Return] 0
+    └─ ← [Stop]
+
+  [13543] Handler::borrow(8788, 2199)
+    ├─ [2851] LendingPool::getCollateral(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a]) [staticcall]
+    │   └─ ← [Return] 0
+    └─ ← [Stop]
+
+  [13543] Handler::borrow(26895088 [2.689e7], 11526742075859338894504087487765299468545029989727510 [1.152e52])
+    ├─ [2851] LendingPool::getCollateral(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a]) [staticcall]
+    │   └─ ← [Return] 0
+    └─ ← [Stop]
+
+  [13543] Handler::borrow(876665987421141708915420686426112 [8.766e32], 2543816303776888527212368806855266006249130121243787823482350919 [2.543e63])
+    ├─ [2851] LendingPool::getCollateral(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a]) [staticcall]
+    │   └─ ← [Return] 0
+    └─ ← [Stop]
+
+  [13543] Handler::borrow(1, 113783637537046220580294842460202942996922804704387883571421304957560592269312 [1.137e77])
+    ├─ [2851] LendingPool::getCollateral(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a]) [staticcall]
+    │   └─ ← [Return] 0
+    └─ ← [Stop]
+
+  [44390] Handler::depositCollateral(8249, 8615)
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 8249}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 8249)
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [13543] Handler::borrow(2273910358957250772114 [2.273e21], 40073028835541242656 [4.007e19])
+    ├─ [2851] LendingPool::getCollateral(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a]) [staticcall]
+    │   └─ ← [Return] 0
+    └─ ← [Stop]
+
+  [13543] Handler::borrow(8663, 106866302382933830282767374441795285966603954588932351183898184523139384344575 [1.068e77])
+    ├─ [2851] LendingPool::getCollateral(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a]) [staticcall]
+    │   └─ ← [Return] 0
+    └─ ← [Stop]
+
+  [44390] Handler::depositCollateral(5000, 9281)
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 5000}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 5000)
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [45861] Handler::depositCollateral(238950640571966204668528922985228161254327 [2.389e41], 1265526590739888995664227246636608366945278429940851000 [1.265e54])
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 7916124654392369358}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 7916124654392369358 [7.916e18])
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [45861] Handler::depositCollateral(37397802067430704615453 [3.739e22], 121279924388943654424043682267478669953464712 [1.212e44])
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 7802067430708350714}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 7802067430708350714 [7.802e18])
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [13543] Handler::borrow(10000 [1e4], 5710)
+    ├─ [2851] LendingPool::getCollateral(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a]) [staticcall]
+    │   └─ ← [Return] 0
+    └─ ← [Stop]
+
+  [13543] Handler::borrow(2439649223 [2.439e9], 8870)
+    ├─ [2851] LendingPool::getCollateral(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a]) [staticcall]
+    │   └─ ← [Return] 0
+    └─ ← [Stop]
+
+  [13543] Handler::borrow(1205, 10000000000000000000 [1e19])
+    ├─ [2851] LendingPool::getCollateral(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a]) [staticcall]
+    │   └─ ← [Return] 0
+    └─ ← [Stop]
+
+  [45861] Handler::depositCollateral(193910445206459163915478707756477123565425849 [1.939e44], 1967132547350198131753053812282124298090524990464528847732156248141 [1.967e66])
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 3881749533949930631}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 3881749533949930631 [3.881e18])
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [45621] Handler::depositCollateral(115792089237316195423570985008687907853269984665640564039457584007913129639932 [1.157e77], 75478216875102739458055287902567849972 [7.547e37])
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 9999999999999999997}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 9999999999999999997 [9.999e18])
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [13543] Handler::borrow(127504223601099794911741241901307114 [1.275e35], 1888839244592554612176581575476435704918662436507925354531 [1.888e57])
+    ├─ [2851] LendingPool::getCollateral(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a]) [staticcall]
+    │   └─ ← [Return] 0
+    └─ ← [Stop]
+
+  [45861] Handler::depositCollateral(25609792487975205973458184829461508395873463389858 [2.56e49], 19552010916 [1.955e10])
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 4840730331255770040}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 4840730331255770040 [4.84e18])
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [13543] Handler::borrow(7852781982388659863 [7.852e18], 518188692671659914259500028173844784085420 [5.181e41])
+    ├─ [2851] LendingPool::getCollateral(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a]) [staticcall]
+    │   └─ ← [Return] 0
+    └─ ← [Stop]
+
+  [44390] Handler::depositCollateral(5000, 10000000000 [1e10])
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 5000}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 5000)
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [13543] Handler::borrow(178218747682482811344558449668622 [1.782e32], 5236560082784229210508757284388925501839382694381773116380963 [5.236e60])
+    ├─ [2851] LendingPool::getCollateral(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a]) [staticcall]
+    │   └─ ← [Return] 0
+    └─ ← [Stop]
+
+  [45861] Handler::depositCollateral(5099411625180043455641253993338566998457271 [5.099e42], 4023900 [4.023e6])
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 5348824959109197024}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 5348824959109197024 [5.348e18])
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [45863] Handler::depositCollateral(44, 162374299691813012500085334366113911149468 [1.623e41])
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 9999999999999999045}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 9999999999999999045 [9.999e18])
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [45861] Handler::depositCollateral(66778909990135448720253731858525905758603 [6.677e40], 2533482370550469739487429560936284031894830003299879404674593366185516 [2.533e69])
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 6839873057899365457}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 6839873057899365457 [6.839e18])
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [13543] Handler::borrow(1000000000000000000000000 [1e24], 10)
+    ├─ [2851] LendingPool::getCollateral(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a]) [staticcall]
+    │   └─ ← [Return] 0
+    └─ ← [Stop]
+
+  [13543] Handler::borrow(9, 1)
+    ├─ [2851] LendingPool::getCollateral(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a]) [staticcall]
+    │   └─ ← [Return] 0
+    └─ ← [Stop]
+
+  [45861] Handler::depositCollateral(70958232590769932536 [7.095e19], 80996686076373037208060715371062196628810156883 [8.099e46])
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 958232590769939529}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 958232590769939529 [9.582e17])
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [45861] Handler::depositCollateral(62231068743561659899 [6.223e19], 637110476625424389798510923465326618467733293611 [6.371e47])
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 2231068743561665893}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 2231068743561665893 [2.231e18])
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [13543] Handler::borrow(7873, 0)
+    ├─ [2851] LendingPool::getCollateral(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a]) [staticcall]
+    │   └─ ← [Return] 0
+    └─ ← [Stop]
+
+  [44390] Handler::depositCollateral(5195, 1644)
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 5195}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 5195)
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [13543] Handler::borrow(8000, 10000000000000000000 [1e19])
+    ├─ [2851] LendingPool::getCollateral(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a]) [staticcall]
+    │   └─ ← [Return] 0
+    └─ ← [Stop]
+
+  [13543] Handler::borrow(18, 1322)
+    ├─ [2851] LendingPool::getCollateral(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a]) [staticcall]
+    │   └─ ← [Return] 0
+    └─ ← [Stop]
+
+  [13543] Handler::borrow(36569821023125389375129993236352058 [3.656e34], 1696567981972231312446736740773990918568626243995198 [1.696e51])
+    ├─ [2851] LendingPool::getCollateral(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a]) [staticcall]
+    │   └─ ← [Return] 0
+    └─ ← [Stop]
+
+  [44390] Handler::depositCollateral(9768, 10351 [1.035e4])
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 9768}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 9768)
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [44390] Handler::depositCollateral(5075763107269869601 [5.075e18], 103733938676545427114978800589761046176600342638249127 [1.037e53])
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 5075763107269869601}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 5075763107269869601 [5.075e18])
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [45861] Handler::depositCollateral(7745591772060468494461627546455 [7.745e30], 92479804157782256047037453206687533608440051787108709368871 [9.247e58])
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 469268246245575249}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 469268246245575249 [4.692e17])
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [45861] Handler::depositCollateral(5355897390810220031978999287724515504953208184158109595315982249810 [5.355e66], 94187829897192813912269844402876952466215230078915021192336112197373445 [9.418e70])
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 6569736635135395036}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 6569736635135395036 [6.569e18])
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [13543] Handler::borrow(1000, 300)
+    ├─ [2851] LendingPool::getCollateral(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a]) [staticcall]
+    │   └─ ← [Return] 0
+    └─ ← [Stop]
+
+  [13543] Handler::borrow(1, 965503574150124796848363739543891077645253405573430194151304047142022 [9.655e68])
+    ├─ [2851] LendingPool::getCollateral(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a]) [staticcall]
+    │   └─ ← [Return] 0
+    └─ ← [Stop]
+
+  [44390] Handler::depositCollateral(7500, 10800 [1.08e4])
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 7500}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 7500)
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [13543] Handler::borrow(67348991681326567 [6.734e16], 502615350348 [5.026e11])
+    ├─ [2851] LendingPool::getCollateral(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a]) [staticcall]
+    │   └─ ← [Return] 0
+    └─ ← [Stop]
+
+  [45863] Handler::depositCollateral(276, 2578)
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 9999999999999999277}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 9999999999999999277 [9.999e18])
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [45861] Handler::depositCollateral(3093432970457677013404542618536568675262653618563 [3.093e48], 201581195782052360913382660862873913717660102512441258820 [2.015e56])
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 8533186868440706838}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 8533186868440706838 [8.533e18])
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [44390] Handler::depositCollateral(10000000000000000000 [1e19], 0)
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 10000000000000000000}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 10000000000000000000 [1e19])
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [13543] Handler::borrow(2200, 2024)
+    ├─ [2851] LendingPool::getCollateral(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a]) [staticcall]
+    │   └─ ← [Return] 0
+    └─ ← [Stop]
+
+  [13543] Handler::borrow(14232351881314454510637014009913 [1.423e31], 25980683627166828288276888080 [2.598e28])
+    ├─ [2851] LendingPool::getCollateral(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a]) [staticcall]
+    │   └─ ← [Return] 0
+    └─ ← [Stop]
+
+  [13543] Handler::borrow(312917779669924050763884692445 [3.129e29], 1859123104875497534422339526342458712568574 [1.859e42])
+    ├─ [2851] LendingPool::getCollateral(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a]) [staticcall]
+    │   └─ ← [Return] 0
+    └─ ← [Stop]
+
+  [45861] Handler::depositCollateral(455842751920742156847893630934015208294521531753955024983190450984 [4.558e65], 16368982551023371729405012690499037545049605424210917067057200597036 [1.636e67])
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 8461573743544523126}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 8461573743544523126 [8.461e18])
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [13543] Handler::borrow(3250, 1000000000000 [1e12])
+    ├─ [2851] LendingPool::getCollateral(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a]) [staticcall]
+    │   └─ ← [Return] 0
+    └─ ← [Stop]
+
+  [45863] Handler::depositCollateral(10, 51588588602588821005756789575491181422003036108797562638495584839447679933080 [5.158e76])
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 9999999999999999011}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 9999999999999999011 [9.999e18])
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [45861] Handler::depositCollateral(14220947411222713551307215688392574387100764 [1.422e43], 16197038409111295030 [1.619e19])
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 2069541800087888778}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 2069541800087888778 [2.069e18])
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [45861] Handler::depositCollateral(1136503286769117134287453 [1.136e24], 314745751684365 [3.147e14])
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 3286769117247823803}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 3286769117247823803 [3.286e18])
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [13543] Handler::borrow(1000000000000 [1e12], 10800 [1.08e4])
+    ├─ [2851] LendingPool::getCollateral(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a]) [staticcall]
+    │   └─ ← [Return] 0
+    └─ ← [Stop]
+
+  [45861] Handler::depositCollateral(20144326978728481045367538288701581098155354923306 [2.014e49], 40815454440761037127934179946608033488429088160584368 [4.081e52])
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 7038570957120943939}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 7038570957120943939 [7.038e18])
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [13543] Handler::borrow(340282366920938463463374607431768211453 [3.402e38], 2220542073318090501026544824254930694 [2.22e36])
+    ├─ [2851] LendingPool::getCollateral(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a]) [staticcall]
+    │   └─ ← [Return] 0
+    └─ ← [Stop]
+
+  [44390] Handler::depositCollateral(7300, 8606)
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 7300}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 7300)
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [44390] Handler::depositCollateral(7500, 1)
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 7500}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 7500)
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [13543] Handler::borrow(3, 9856089581361701817535924500883660707159719774 [9.856e45])
+    ├─ [2851] LendingPool::getCollateral(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a]) [staticcall]
+    │   └─ ← [Return] 0
+    └─ ← [Stop]
+
+  [45863] Handler::depositCollateral(931, 3731)
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 9999999999999999932}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 9999999999999999932 [9.999e18])
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [44390] Handler::depositCollateral(481420 [4.814e5], 329916 [3.299e5])
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 481420}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 481420 [4.814e5])
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [45861] Handler::depositCollateral(206079190345079790565789146892059675 [2.06e35], 66168760911942 [6.616e13])
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 1153100262365532694}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 1153100262365532694 [1.153e18])
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [13543] Handler::borrow(10000000000 [1e10], 5234)
+    ├─ [2851] LendingPool::getCollateral(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a]) [staticcall]
+    │   └─ ← [Return] 0
+    └─ ← [Stop]
+
+  [45861] Handler::depositCollateral(2787597575451348581448158787596 [2.787e30], 3104)
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 1348859929156575051}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 1348859929156575051 [1.348e18])
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [45621] Handler::depositCollateral(115792089237316195423570985008687907853269984665640564039457584007913129639932 [1.157e77], 991444669087043430900609100246512968350423039694821075221988537874118 [9.914e68])
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 9999999999999999997}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 9999999999999999997 [9.999e18])
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [13543] Handler::borrow(8000, 5000)
+    ├─ [2851] LendingPool::getCollateral(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a]) [staticcall]
+    │   └─ ← [Return] 0
+    └─ ← [Stop]
+
+  [45863] Handler::depositCollateral(10, 5905)
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 9999999999999999011}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 9999999999999999011 [9.999e18])
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [45003] Handler::depositCollateral(1, 16359873838509946841139601702267304292695714650122170576105727105457421244710 [1.635e76])
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 1001}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 1001)
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [44390] Handler::depositCollateral(8700, 10172 [1.017e4])
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 8700}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 8700)
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [44390] Handler::depositCollateral(10800 [1.08e4], 1000000000000000000000000 [1e24])
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 10800}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 10800 [1.08e4])
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [45861] Handler::depositCollateral(67991500464893601579 [6.799e19], 3619)
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 7991500464893607573}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 7991500464893607573 [7.991e18])
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [45861] Handler::depositCollateral(79108025628984519261424715630470154939132666594 [7.91e46], 15484236100 [1.548e10])
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 6024418654348614998}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 6024418654348614998 [6.024e18])
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [13543] Handler::borrow(148965 [1.489e5], 33461534291454306256651890648271186632478 [3.346e40])
+    ├─ [2851] LendingPool::getCollateral(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a]) [staticcall]
+    │   └─ ← [Return] 0
+    └─ ← [Stop]
+
+  [13543] Handler::borrow(178264786 [1.782e8], 189378053480412298937122 [1.893e23])
+    ├─ [2851] LendingPool::getCollateral(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a]) [staticcall]
+    │   └─ ← [Return] 0
+    └─ ← [Stop]
+
+  [13543] Handler::borrow(1000000000000000000000000 [1e24], 1631)
+    ├─ [2851] LendingPool::getCollateral(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a]) [staticcall]
+    │   └─ ← [Return] 0
+    └─ ← [Stop]
+
+  [44390] Handler::depositCollateral(514112 [5.141e5], 4513979912494802109862062833160584017158640883861627713448813300047904467835 [4.513e75])
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 514112}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 514112 [5.141e5])
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [13543] Handler::borrow(1000000000000000000000000 [1e24], 8831)
+    ├─ [2851] LendingPool::getCollateral(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a]) [staticcall]
+    │   └─ ← [Return] 0
+    └─ ← [Stop]
+
+  [13543] Handler::borrow(2078066520190396365602032611013835724 [2.078e36], 301478846870756097 [3.014e17])
+    ├─ [2851] LendingPool::getCollateral(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a]) [staticcall]
+    │   └─ ← [Return] 0
+    └─ ← [Stop]
+
+  [45621] Handler::depositCollateral(115792089237316195423570985008687907853269984665640564039457584007913129639935 [1.157e77], 1)
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 10000000000000000000}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 10000000000000000000 [1e19])
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [45861] Handler::depositCollateral(26759842108621645932538427551125452286043756378563697532330335159589324 [2.675e70], 1289828332648604108649626052354210181 [1.289e36])
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 3743769004153043756}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 3743769004153043756 [3.743e18])
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [13543] Handler::borrow(300, 1362)
+    ├─ [2851] LendingPool::getCollateral(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a]) [staticcall]
+    │   └─ ← [Return] 0
+    └─ ← [Stop]
+
+  [13543] Handler::borrow(1, 2054)
+    ├─ [2851] LendingPool::getCollateral(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a]) [staticcall]
+    │   └─ ← [Return] 0
+    └─ ← [Stop]
+
+  [13543] Handler::borrow(84690443072970 [8.469e13], 4783262188483551288087726 [4.783e24])
+    ├─ [2851] LendingPool::getCollateral(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a]) [staticcall]
+    │   └─ ← [Return] 0
+    └─ ← [Stop]
+
+  [44390] Handler::depositCollateral(10000000000000000000 [1e19], 10000000000 [1e10])
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 10000000000000000000}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 10000000000000000000 [1e19])
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [45621] Handler::depositCollateral(115792089237316195423570985008687907853269984665640564039457584007913129639934 [1.157e77], 331071761283334347538497152497078183 [3.31e35])
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 9999999999999999999}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 9999999999999999999 [9.999e18])
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [13543] Handler::borrow(1841163090440477907544 [1.841e21], 210497718707916698 [2.104e17])
+    ├─ [2851] LendingPool::getCollateral(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a]) [staticcall]
+    │   └─ ← [Return] 0
+    └─ ← [Stop]
+
+  [13543] Handler::borrow(52992306150 [5.299e10], 19545136941755304150985901818175129991226351378168 [1.954e49])
+    ├─ [2851] LendingPool::getCollateral(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a]) [staticcall]
+    │   └─ ← [Return] 0
+    └─ ← [Stop]
+
+  [44390] Handler::depositCollateral(122626440654 [1.226e11], 1618955979059918028162692314160811521372518156124784036335282406988989186 [1.618e72])
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 122626440654}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 122626440654 [1.226e11])
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [13543] Handler::borrow(1637, 2662)
+    ├─ [2851] LendingPool::getCollateral(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a]) [staticcall]
+    │   └─ ← [Return] 0
+    └─ ← [Stop]
+
+  [45861] Handler::depositCollateral(60102421700065162484 [6.01e19], 115792089237316195423570985008687907853269984665640564039457584007913129639933 [1.157e77])
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 102421700065168478}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 102421700065168478 [1.024e17])
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [45861] Handler::depositCollateral(814630229528601216696050330173351550712605177875338601597 [8.146e56], 42869189099469546534950298792507227163674212019432237 [4.286e52])
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 5870159929399344731}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 5870159929399344731 [5.87e18])
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [44390] Handler::depositCollateral(1000000000000000000 [1e18], 115)
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 1000000000000000000}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 1000000000000000000 [1e18])
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [13543] Handler::borrow(0, 1131491088613853380701409897307625817092 [1.131e39])
+    ├─ [2851] LendingPool::getCollateral(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a]) [staticcall]
+    │   └─ ← [Return] 0
+    └─ ← [Stop]
+
+  [44390] Handler::depositCollateral(3035, 1322)
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 3035}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 3035)
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [45861] Handler::depositCollateral(1338316831680392699823558335322097645697768974851354617792785584907629 [1.338e69], 5231179605652164095452891644095090216774582689558458366653 [5.231e57])
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 1895005125800310010}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 1895005125800310010 [1.895e18])
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [13543] Handler::borrow(57690672218845 [5.769e13], 789304792274876845127095843740366245187552781511521670387554903089101650693 [7.893e74])
+    ├─ [2851] LendingPool::getCollateral(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a]) [staticcall]
+    │   └─ ← [Return] 0
+    └─ ← [Stop]
+
+  [44390] Handler::depositCollateral(2994, 10)
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 2994}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 2994)
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [44390] Handler::depositCollateral(7581, 5795)
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 7581}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 7581)
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [13543] Handler::borrow(16839355531959 [1.683e13], 10280861 [1.028e7])
+    ├─ [2851] LendingPool::getCollateral(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a]) [staticcall]
+    │   └─ ← [Return] 0
+    └─ ← [Stop]
+
+  [13543] Handler::borrow(1000000000000000000000000 [1e24], 3120)
+    ├─ [2851] LendingPool::getCollateral(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a]) [staticcall]
+    │   └─ ← [Return] 0
+    └─ ← [Stop]
+
+  [45003] Handler::depositCollateral(1, 115792089237316195423570985008687907853269984665640564039457584007913129639932 [1.157e77])
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 1001}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 1001)
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [13543] Handler::borrow(77590100248793520164081044476355937 [7.759e34], 391058201504025 [3.91e14])
+    ├─ [2851] LendingPool::getCollateral(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a]) [staticcall]
+    │   └─ ← [Return] 0
+    └─ ← [Stop]
+
+  [13543] Handler::borrow(392613444846457 [3.926e14], 1269)
+    ├─ [2851] LendingPool::getCollateral(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a]) [staticcall]
+    │   └─ ← [Return] 0
+    └─ ← [Stop]
+
+  [13543] Handler::borrow(18019449623908401753667539241133 [1.801e31], 47257825779342674923293726857549646767 [4.725e37])
+    ├─ [2851] LendingPool::getCollateral(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a]) [staticcall]
+    │   └─ ← [Return] 0
+    └─ ← [Stop]
+
+  [13543] Handler::borrow(180941306097844555676192430 [1.809e26], 138718512822758074105389421820503 [1.387e32])
+    ├─ [2851] LendingPool::getCollateral(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a]) [staticcall]
+    │   └─ ← [Return] 0
+    └─ ← [Stop]
+
+  [13543] Handler::borrow(1686, 37)
+    ├─ [2851] LendingPool::getCollateral(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a]) [staticcall]
+    │   └─ ← [Return] 0
+    └─ ← [Stop]
+
+  [13543] Handler::borrow(1000000000000 [1e12], 5964)
+    ├─ [2851] LendingPool::getCollateral(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a]) [staticcall]
+    │   └─ ← [Return] 0
+    └─ ← [Stop]
+
+  [45861] Handler::depositCollateral(6882790717513576943535516892 [6.882e27], 115792089237316195423570985008687907853269984665640564039457584007913129639935 [1.157e77])
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 7513577631126308821}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 7513577631126308821 [7.513e18])
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [13543] Handler::borrow(11483062028240908028688928 [1.148e25], 5690024406692414276558886987401633349863004444441847051823265214043815419621 [5.69e75])
+    ├─ [2851] LendingPool::getCollateral(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a]) [staticcall]
+    │   └─ ← [Return] 0
+    └─ ← [Stop]
+
+  [13543] Handler::borrow(223834811 [2.238e8], 834105547743837521239199534795725123583330862894027073244012832717546 [8.341e68])
+    ├─ [2851] LendingPool::getCollateral(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a]) [staticcall]
+    │   └─ ← [Return] 0
+    └─ ← [Stop]
+
+  [13543] Handler::borrow(4462690119238506 [4.462e15], 1790364670183588559773085547 [1.79e27])
+    ├─ [2851] LendingPool::getCollateral(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a]) [staticcall]
+    │   └─ ← [Return] 0
+    └─ ← [Stop]
+
+  [45861] Handler::depositCollateral(3077935406753615669531327986678394421931033455622295498424348364385 [3.077e66], 1752388707011473589157893 [1.752e24])
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 8885039514472550391}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 8885039514472550391 [8.885e18])
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [13543] Handler::borrow(301586223382526028183139308632856797 [3.015e35], 49658825736684224895808 [4.965e22])
+    ├─ [2851] LendingPool::getCollateral(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a]) [staticcall]
+    │   └─ ← [Return] 0
+    └─ ← [Stop]
+
+  [44390] Handler::depositCollateral(4475, 5248)
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 4475}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 4475)
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [44390] Handler::depositCollateral(10350 [1.035e4], 0)
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 10350}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 10350 [1.035e4])
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [45861] Handler::depositCollateral(46404684816503254932409861205837137497648837295160 [4.64e49], 197802356170 [1.978e11])
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 2768364612487308709}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 2768364612487308709 [2.768e18])
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [13543] Handler::borrow(5000, 2973)
+    ├─ [2851] LendingPool::getCollateral(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a]) [staticcall]
+    │   └─ ← [Return] 0
+    └─ ← [Stop]
+
+  [13543] Handler::borrow(620522374994 [6.205e11], 2883)
+    ├─ [2851] LendingPool::getCollateral(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a]) [staticcall]
+    │   └─ ← [Return] 0
+    └─ ← [Stop]
+
+  [13543] Handler::borrow(10000 [1e4], 382)
+    ├─ [2851] LendingPool::getCollateral(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a]) [staticcall]
+    │   └─ ← [Return] 0
+    └─ ← [Stop]
+
+  [44390] Handler::depositCollateral(10128 [1.012e4], 1310)
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 10128}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 10128 [1.012e4])
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [13543] Handler::borrow(14951 [1.495e4], 2704561008883385103998357263668896032667365746075 [2.704e48])
+    ├─ [2851] LendingPool::getCollateral(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a]) [staticcall]
+    │   └─ ← [Return] 0
+    └─ ← [Stop]
+
+  [13543] Handler::borrow(30337208353028877266298561161275210 [3.033e34], 5748753531345886 [5.748e15])
+    ├─ [2851] LendingPool::getCollateral(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a]) [staticcall]
+    │   └─ ← [Return] 0
+    └─ ← [Stop]
+
+  [13543] Handler::borrow(93369499816233768526 [9.336e19], 4870)
+    ├─ [2851] LendingPool::getCollateral(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a]) [staticcall]
+    │   └─ ← [Return] 0
+    └─ ← [Stop]
+
+  [44390] Handler::depositCollateral(1962, 8000)
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 1962}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 1962)
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [13543] Handler::borrow(445570352445624 [4.455e14], 25945300 [2.594e7])
+    ├─ [2851] LendingPool::getCollateral(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a]) [staticcall]
+    │   └─ ← [Return] 0
+    └─ ← [Stop]
+
+  [13543] Handler::borrow(1000000000000000000 [1e18], 9937)
+    ├─ [2851] LendingPool::getCollateral(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a]) [staticcall]
+    │   └─ ← [Return] 0
+    └─ ← [Stop]
+
+  [45861] Handler::depositCollateral(21365512736782876264959837211098369713155021 [2.136e43], 1479964 [1.479e6])
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 9615707921810672566}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 9615707921810672566 [9.615e18])
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [45861] Handler::depositCollateral(930245567992477617492763543174756744684076695981418532617094 [9.302e59], 22910882054376675937 [2.291e19])
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 5679747092138131972}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 5679747092138131972 [5.679e18])
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [13543] Handler::borrow(10000000000000000000 [1e19], 18)
+    ├─ [2851] LendingPool::getCollateral(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a]) [staticcall]
+    │   └─ ← [Return] 0
+    └─ ← [Stop]
+
+  [13543] Handler::borrow(0, 8848)
+    ├─ [2851] LendingPool::getCollateral(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a]) [staticcall]
+    │   └─ ← [Return] 0
+    └─ ← [Stop]
+
+  [45861] Handler::depositCollateral(5726396761029979505068205714433128792668669806338166533 [5.726e54], 1224)
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 8479359725019201684}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 8479359725019201684 [8.479e18])
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [13543] Handler::borrow(1000000000000 [1e12], 1128)
+    ├─ [2851] LendingPool::getCollateral(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a]) [staticcall]
+    │   └─ ← [Return] 0
+    └─ ← [Stop]
+
+  [13543] Handler::borrow(1688155884031 [1.688e12], 253881825776 [2.538e11])
+    ├─ [2851] LendingPool::getCollateral(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a]) [staticcall]
+    │   └─ ← [Return] 0
+    └─ ← [Stop]
+
+  [44390] Handler::depositCollateral(6391, 7500)
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 6391}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 6391)
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [45861] Handler::depositCollateral(110001375121440416185267518584366890939850586752101789353118209662645019 [1.1e71], 5659785913692411414936756573612794086000390541798670673744 [5.659e57])
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 9076770173460120840}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 9076770173460120840 [9.076e18])
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [45861] Handler::depositCollateral(54107751133803200499 [5.41e19], 7086417158790191381798275102 [7.086e27])
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 4107751133803205494}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 4107751133803205494 [4.107e18])
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [45861] Handler::depositCollateral(3683081155079989015782996303607027541081 [3.683e39], 56)
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 2803696097966974709}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 2803696097966974709 [2.803e18])
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [45863] Handler::depositCollateral(369, 18)
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 9999999999999999370}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 9999999999999999370 [9.999e18])
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [13543] Handler::borrow(1, 208786495506314027608056800272868218038014581026197808743 [2.087e56])
+    ├─ [2851] LendingPool::getCollateral(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a]) [staticcall]
+    │   └─ ← [Return] 0
+    └─ ← [Stop]
+
+  [45863] Handler::depositCollateral(10, 18)
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 9999999999999999011}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 9999999999999999011 [9.999e18])
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [13543] Handler::borrow(67295100631304862 [6.729e16], 270955468605487065766451327545 [2.709e29])
+    ├─ [2851] LendingPool::getCollateral(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a]) [staticcall]
+    │   └─ ← [Return] 0
+    └─ ← [Stop]
+
+  [45861] Handler::depositCollateral(896450449745198323226137500027351719122400471040 [8.964e47], 1366123217 [1.366e9])
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 2673155997989685083}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 2673155997989685083 [2.673e18])
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [45861] Handler::depositCollateral(155512022875005745734502616647620570471 [1.555e38], 36971756844875207343029145123111300013941981078963257035782998556 [3.697e64])
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 153701860696121344}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 153701860696121344 [1.537e17])
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [45861] Handler::depositCollateral(23458424232396332598023028246323790 [2.345e34], 2157934068788819553416723808603308230139389276769085146416249 [2.157e60])
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 4941519609062717157}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 4941519609062717157 [4.941e18])
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [13543] Handler::borrow(8639559 [8.639e6], 684450288192902 [6.844e14])
+    ├─ [2851] LendingPool::getCollateral(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a]) [staticcall]
+    │   └─ ← [Return] 0
+    └─ ← [Stop]
+
+  [45861] Handler::depositCollateral(305468604102152036229379332333783495729466797020033520 [3.054e53], 6201840287051584089933647567274609826341147565984439009098371267 [6.201e63])
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 3624185722683652024}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 3624185722683652024 [3.624e18])
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [13543] Handler::borrow(3721594797 [3.721e9], 47198298104202903239659011263807527 [4.719e34])
+    ├─ [2851] LendingPool::getCollateral(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a]) [staticcall]
+    │   └─ ← [Return] 0
+    └─ ← [Stop]
+
+  [13543] Handler::borrow(9080, 5000)
+    ├─ [2851] LendingPool::getCollateral(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a]) [staticcall]
+    │   └─ ← [Return] 0
+    └─ ← [Stop]
+
+  [13543] Handler::borrow(41183596503608710134458 [4.118e22], 1739963248109753 [1.739e15])
+    ├─ [2851] LendingPool::getCollateral(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a]) [staticcall]
+    │   └─ ← [Return] 0
+    └─ ← [Stop]
+
+  [13543] Handler::borrow(50326242771880756258500 [5.032e22], 7515)
+    ├─ [2851] LendingPool::getCollateral(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a]) [staticcall]
+    │   └─ ← [Return] 0
+    └─ ← [Stop]
+
+  [13543] Handler::borrow(71413480905966782 [7.141e16], 7382540 [7.382e6])
+    ├─ [2851] LendingPool::getCollateral(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a]) [staticcall]
+    │   └─ ← [Return] 0
+    └─ ← [Stop]
+
+  [45861] Handler::depositCollateral(1741489937096121787465982429106853234915314166918 [1.741e48], 9860463829446682406008123 [9.86e24])
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 9437182853945952418}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 9437182853945952418 [9.437e18])
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [45861] Handler::depositCollateral(6252990426670413410270 [6.252e21], 2740925597359303708715048997704242507438896277757282930404316016 [2.74e63])
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 2990426670414034645}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 2990426670414034645 [2.99e18])
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [13543] Handler::borrow(50326242771880756258500000000000000 [5.032e34], 71413480905966782000000000000 [7.141e28])
+    ├─ [2851] LendingPool::getCollateral(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a]) [staticcall]
+    │   └─ ← [Return] 0
+    └─ ← [Stop]
+
+  [45861] Handler::depositCollateral(602873978809743720483 [6.028e20], 6139468140561064142241563228279897793895164 [6.139e42])
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 2873978809743780423}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 2873978809743780423 [2.873e18])
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [45861] Handler::depositCollateral(9184255216979234744785303510698348125961564017343621848 [9.184e54], 3005404502219016781 [3.005e18])
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 8972292741050300770}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 8972292741050300770 [8.972e18])
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [13543] Handler::borrow(340282366920938463463374607431768211454 [3.402e38], 1728480582382724620 [1.728e18])
+    ├─ [2851] LendingPool::getCollateral(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a]) [staticcall]
+    │   └─ ← [Return] 0
+    └─ ← [Stop]
+
+  [13543] Handler::borrow(2344770167537410429545234830 [2.344e27], 2814924659247384998850044984949032670430172264601920730598183012 [2.814e63])
+    ├─ [2851] LendingPool::getCollateral(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a]) [staticcall]
+    │   └─ ← [Return] 0
+    └─ ← [Stop]
+
+  [13543] Handler::borrow(5507, 1)
+    ├─ [2851] LendingPool::getCollateral(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a]) [staticcall]
+    │   └─ ← [Return] 0
+    └─ ← [Stop]
+
+  [13543] Handler::borrow(37415104969345 [3.741e13], 49034080241 [4.903e10])
+    ├─ [2851] LendingPool::getCollateral(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a]) [staticcall]
+    │   └─ ← [Return] 0
+    └─ ← [Stop]
+
+  [13543] Handler::borrow(0, 18)
+    ├─ [2851] LendingPool::getCollateral(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a]) [staticcall]
+    │   └─ ← [Return] 0
+    └─ ← [Stop]
+
+  [45861] Handler::depositCollateral(1210516089459572193570214615125532116396 [1.21e39], 18830467894298347049854780760790043 [1.883e34])
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 771952136806334946}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 771952136806334946 [7.719e17])
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [45003] Handler::depositCollateral(1, 1)
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 1001}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 1001)
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [13543] Handler::borrow(212587625 [2.125e8], 16422733874103185242695386443350957262550206752352978451853496750 [1.642e64])
+    ├─ [2851] LendingPool::getCollateral(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a]) [staticcall]
+    │   └─ ← [Return] 0
+    └─ ← [Stop]
+
+  [13543] Handler::borrow(2180, 4129)
+    ├─ [2851] LendingPool::getCollateral(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a]) [staticcall]
+    │   └─ ← [Return] 0
+    └─ ← [Stop]
+
+  [13543] Handler::borrow(1000, 1000000000000000000 [1e18])
+    ├─ [2851] LendingPool::getCollateral(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a]) [staticcall]
+    │   └─ ← [Return] 0
+    └─ ← [Stop]
+
+  [45861] Handler::depositCollateral(4495770600278704017127173302999908756582054242550438979001782170641250348 [4.495e72], 1685547190864985124397327025114498196919946542042525272407680721998023181739 [1.685e75])
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 7681130572138183946}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 7681130572138183946 [7.681e18])
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [13543] Handler::borrow(6645588378326329 [6.645e15], 3)
+    ├─ [2851] LendingPool::getCollateral(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a]) [staticcall]
+    │   └─ ← [Return] 0
+    └─ ← [Stop]
+
+  [13543] Handler::borrow(8998, 10800 [1.08e4])
+    ├─ [2851] LendingPool::getCollateral(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a]) [staticcall]
+    │   └─ ← [Return] 0
+    └─ ← [Stop]
+
+  [13543] Handler::borrow(8000, 1000000000000000000 [1e18])
+    ├─ [2851] LendingPool::getCollateral(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a]) [staticcall]
+    │   └─ ← [Return] 0
+    └─ ← [Stop]
+
+  [45861] Handler::depositCollateral(1000000000000000000000000 [1e24], 824)
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 99900000}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 99900000 [9.99e7])
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [44390] Handler::depositCollateral(7500, 4878)
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 7500}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 7500)
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [45861] Handler::depositCollateral(307253518696390864478890162598691711380388026946351484 [3.072e53], 19520074490978208440756488863904 [1.952e31])
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 9214704395723750271}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 9214704395723750271 [9.214e18])
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [45861] Handler::depositCollateral(5124892753900053728212116112292730087024084372325727622575339833950384732 [5.124e72], 1427562456991308852730109210223881241734619238783821226 [1.427e54])
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 3927482194883500638}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 3927482194883500638 [3.927e18])
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [13543] Handler::borrow(15972447555777385659726381127146833 [1.597e34], 115792089237316195423570985008687907853269984665640564039457584007913129639932 [1.157e77])
+    ├─ [2851] LendingPool::getCollateral(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a]) [staticcall]
+    │   └─ ← [Return] 0
+    └─ ← [Stop]
+
+  [13543] Handler::borrow(283633586789725565 [2.836e17], 6215958331668727623093354 [6.215e24])
+    ├─ [2851] LendingPool::getCollateral(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a]) [staticcall]
+    │   └─ ← [Return] 0
+    └─ ← [Stop]
+
+  [45861] Handler::depositCollateral(2527867476856118110435704475094761269047058408162047327158099256584484627 [2.527e72], 2)
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 5849752835540804455}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 5849752835540804455 [5.849e18])
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [45861] Handler::depositCollateral(8280710476269561210333 [8.28e21], 561088980740634165986890961721656111154063035138905189440702846305455120172 [5.61e74])
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 710476269562037505}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 710476269562037505 [7.104e17])
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [13543] Handler::borrow(686690251 [6.866e8], 127036885144422455477844968665630679853231208770470447324172424569193796511 [1.27e74])
+    ├─ [2851] LendingPool::getCollateral(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a]) [staticcall]
+    │   └─ ← [Return] 0
+    └─ ← [Stop]
+
+  [13543] Handler::borrow(2480, 930695261029626041862128559604328702751803597910441220340288805956241381035 [9.306e74])
+    ├─ [2851] LendingPool::getCollateral(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a]) [staticcall]
+    │   └─ ← [Return] 0
+    └─ ← [Stop]
+
+  [45863] Handler::depositCollateral(10, 197375870482849119555 [1.973e20])
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 9999999999999999011}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 9999999999999999011 [9.999e18])
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [45861] Handler::depositCollateral(137895206003614404724173987716165 [1.378e32], 442076260855119397501389477338345099245276806150 [4.42e47])
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 4418499905067476804}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 4418499905067476804 [4.418e18])
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [44390] Handler::depositCollateral(9024462061 [9.024e9], 2714155446939457706965794337673743704138156570607608169539 [2.714e57])
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 9024462061}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 9024462061 [9.024e9])
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [13543] Handler::borrow(396544651476495312361 [3.965e20], 33643874518501353733 [3.364e19])
+    ├─ [2851] LendingPool::getCollateral(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a]) [staticcall]
+    │   └─ ← [Return] 0
+    └─ ← [Stop]
+
+  [13543] Handler::borrow(2441, 0)
+    ├─ [2851] LendingPool::getCollateral(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a]) [staticcall]
+    │   └─ ← [Return] 0
+    └─ ← [Stop]
+
+  [44390] Handler::depositCollateral(11795419051363 [1.179e13], 115792089237316195423570985008687907853269984665640564039457584007913129639935 [1.157e77])
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 11795419051363}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 11795419051363 [1.179e13])
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [13543] Handler::borrow(3972, 10000000000000000000 [1e19])
+    ├─ [2851] LendingPool::getCollateral(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a]) [staticcall]
+    │   └─ ← [Return] 0
+    └─ ← [Stop]
+
+  [13543] Handler::borrow(65911848575344266640977154616131 [6.591e31], 7091948824215003115713655701923289853699447042378415515 [7.091e54])
+    ├─ [2851] LendingPool::getCollateral(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a]) [staticcall]
+    │   └─ ← [Return] 0
+    └─ ← [Stop]
+
+  [13543] Handler::borrow(70883337632715777606305527782942281 [7.088e34], 9057064555879274132369615076138145400869299544777274438219602 [9.057e60])
+    ├─ [2851] LendingPool::getCollateral(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a]) [staticcall]
+    │   └─ ← [Return] 0
+    └─ ← [Stop]
+
+  [13543] Handler::borrow(1488805590645 [1.488e12], 7024651155530037757133821650558012852593323405738041532270944543281048724926 [7.024e75])
+    ├─ [2851] LendingPool::getCollateral(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a]) [staticcall]
+    │   └─ ← [Return] 0
+    └─ ← [Stop]
+
+  [45861] Handler::depositCollateral(174873910291327011801 [1.748e20], 10000 [1e4])
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 4873910291327028784}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 4873910291327028784 [4.873e18])
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [44390] Handler::depositCollateral(18918729 [1.891e7], 1)
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 18918729}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 18918729 [1.891e7])
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [13543] Handler::borrow(0, 10)
+    ├─ [2851] LendingPool::getCollateral(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a]) [staticcall]
+    │   └─ ← [Return] 0
+    └─ ← [Stop]
+
+  [13543] Handler::borrow(7252166770913291566859973123 [7.252e27], 645215702843833492495820598376105 [6.452e32])
+    ├─ [2851] LendingPool::getCollateral(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a]) [staticcall]
+    │   └─ ← [Return] 0
+    └─ ← [Stop]
+
+  [45861] Handler::depositCollateral(5382281336381311266417452861835 [5.382e30], 115792089237316195423570985008687907853269984665640564039457584007913129639935 [1.157e77])
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 1311804107358366197}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 1311804107358366197 [1.311e18])
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [13543] Handler::borrow(4034, 2466)
+    ├─ [2851] LendingPool::getCollateral(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a]) [staticcall]
+    │   └─ ← [Return] 0
+    └─ ← [Stop]
+
+  [13543] Handler::borrow(404024700 [4.04e8], 2)
+    ├─ [2851] LendingPool::getCollateral(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a]) [staticcall]
+    │   └─ ← [Return] 0
+    └─ ← [Stop]
+
+  [13543] Handler::borrow(10, 1821)
+    ├─ [2851] LendingPool::getCollateral(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a]) [staticcall]
+    │   └─ ← [Return] 0
+    └─ ← [Stop]
+
+  [44390] Handler::depositCollateral(9785, 300)
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 9785}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 9785)
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [45003] Handler::depositCollateral(3, 32923329829923410296045276860 [3.292e28])
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 1003}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 1003)
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [45861] Handler::depositCollateral(19195037365121420310565510988294954397736523152672628 [1.919e52], 46667972114777661843919765488 [4.666e28])
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 4989895925168783125}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 4989895925168783125 [4.989e18])
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [13543] Handler::borrow(0, 115792089237316195423570985008687907853269984665640564039457584007913129639934 [1.157e77])
+    ├─ [2851] LendingPool::getCollateral(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a]) [staticcall]
+    │   └─ ← [Return] 0
+    └─ ← [Stop]
+
+  [44390] Handler::depositCollateral(1461667321126164 [1.461e15], 115792089237316195423570985008687907853269984665640564039457584007913129639935 [1.157e77])
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 1461667321126164}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 1461667321126164 [1.461e15])
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [45861] Handler::depositCollateral(43912516302200394532923279429500298 [4.391e34], 7153263462259118000 [7.153e18])
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 8919783658019319259}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 8919783658019319259 [8.919e18])
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [45861] Handler::depositCollateral(118181112023639927232191 [1.181e23], 12021793101089570740816181731801580536488681269550219771760608816 [1.202e64])
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 1112023639939038373}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 1112023639939038373 [1.112e18])
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [45861] Handler::depositCollateral(5004280093221103682560278165733262 [5.004e33], 233733993751269333846017640699492767895636854912488850841389911 [2.337e62])
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 4182487859478521152}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 4182487859478521152 [4.182e18])
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [44390] Handler::depositCollateral(3375339264 [3.375e9], 813661 [8.136e5])
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 3375339264}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 3375339264 [3.375e9])
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [13543] Handler::borrow(10800 [1.08e4], 5755)
+    ├─ [2851] LendingPool::getCollateral(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a]) [staticcall]
+    │   └─ ← [Return] 0
+    └─ ← [Stop]
+
+  [45861] Handler::depositCollateral(1193704157014000893162265550 [1.193e27], 1188934394460638370347253028188812396540263608948031 [1.188e51])
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 7014001012413310135}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 7014001012413310135 [7.014e18])
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [45861] Handler::depositCollateral(3028520126424079443209082716049646356154170116064495998587680285188642978059 [3.028e75], 54913169510476442531609869462005449364 [5.491e37])
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 5448549315260244748}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 5448549315260244748 [5.448e18])
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [13543] Handler::borrow(9655057753085700 [9.655e15], 76002245531406543399766189306 [7.6e28])
+    ├─ [2851] LendingPool::getCollateral(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a]) [staticcall]
+    │   └─ ← [Return] 0
+    └─ ← [Stop]
+
+  [13543] Handler::borrow(7, 38467 [3.846e4])
+    ├─ [2851] LendingPool::getCollateral(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a]) [staticcall]
+    │   └─ ← [Return] 0
+    └─ ← [Stop]
+
+  [44390] Handler::depositCollateral(10000000000 [1e10], 101)
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 10000000000}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 10000000000 [1e10])
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [45861] Handler::depositCollateral(32875788815163344409319300129762 [3.287e31], 946991 [9.469e5])
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 3347693610602764246}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 3347693610602764246 [3.347e18])
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [13543] Handler::borrow(3663, 1000)
+    ├─ [2851] LendingPool::getCollateral(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a]) [staticcall]
+    │   └─ ← [Return] 0
+    └─ ← [Stop]
+
+  [13543] Handler::borrow(1000000000000000000000000 [1e24], 1128)
+    ├─ [2851] LendingPool::getCollateral(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a]) [staticcall]
+    │   └─ ← [Return] 0
+    └─ ← [Stop]
+
+  [44390] Handler::depositCollateral(4187, 1639)
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 4187}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 4187)
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [13543] Handler::borrow(116282874 [1.162e8], 2)
+    ├─ [2851] LendingPool::getCollateral(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a]) [staticcall]
+    │   └─ ← [Return] 0
+    └─ ← [Stop]
+
+  [13543] Handler::borrow(1, 198279311138484494013754175450312098444 [1.982e38])
+    ├─ [2851] LendingPool::getCollateral(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a]) [staticcall]
+    │   └─ ← [Return] 0
+    └─ ← [Stop]
+
+  [44390] Handler::depositCollateral(8000, 5000)
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 8000}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 8000)
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [13543] Handler::borrow(3407591289 [3.407e9], 570804891072350370008168389447614867407106612781816307340 [5.708e56])
+    ├─ [2851] LendingPool::getCollateral(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a]) [staticcall]
+    │   └─ ← [Return] 0
+    └─ ← [Stop]
+
+  [13543] Handler::borrow(3118, 3283)
+    ├─ [2851] LendingPool::getCollateral(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a]) [staticcall]
+    │   └─ ← [Return] 0
+    └─ ← [Stop]
+
+  [45861] Handler::depositCollateral(254003145484136197976 [2.54e20], 3422)
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 4003145484136222951}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 4003145484136222951 [4.003e18])
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [44390] Handler::depositCollateral(10000 [1e4], 600)
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 10000}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 10000 [1e4])
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [13543] Handler::borrow(117358976668 [1.173e11], 9256338904296918921082442427302399852505816307324346739037972057841048 [9.256e69])
+    ├─ [2851] LendingPool::getCollateral(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a]) [staticcall]
+    │   └─ ← [Return] 0
+    └─ ← [Stop]
+
+  [13543] Handler::borrow(278193734097753273303727 [2.781e23], 3862151552635198402893833433580385753690582530861773006 [3.862e54])
+    ├─ [2851] LendingPool::getCollateral(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a]) [staticcall]
+    │   └─ ← [Return] 0
+    └─ ← [Stop]
+
+  [44390] Handler::depositCollateral(404872897110 [4.048e11], 13)
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 404872897110}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 404872897110 [4.048e11])
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [45861] Handler::depositCollateral(4081682308895067272019738263529415560910617880032982161836274 [4.081e60], 191311227267629 [1.913e14])
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 2485991576018001}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 2485991576018001 [2.485e15])
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [44390] Handler::depositCollateral(6371872432510953998 [6.371e18], 2496344590472689433249619356160836087512746650299330962069466973681394544 [2.496e72])
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 6371872432510953998}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 6371872432510953998 [6.371e18])
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [45861] Handler::depositCollateral(3225445640807832172046431962193222255711522584823211509118 [3.225e57], 6760679115120417248746645903658863721028929089979498195940388353802776098 [6.76e72])
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 9825326502485977806}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 9825326502485977806 [9.825e18])
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [45861] Handler::depositCollateral(104037028092515893726001520362636891260727956781316711601021079992931996139520 [1.04e77], 7500)
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 2482372134775237601}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 2482372134775237601 [2.482e18])
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [45861] Handler::depositCollateral(9555162071354247249710393459968523204030721953936505578695947247003983 [9.555e69], 25007894585466502848321663639675343289258 [2.5e40])
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 4768829976103172724}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 4768829976103172724 [4.768e18])
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [13543] Handler::borrow(1520, 0)
+    ├─ [2851] LendingPool::getCollateral(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a]) [staticcall]
+    │   └─ ← [Return] 0
+    └─ ← [Stop]
+
+  [13543] Handler::borrow(1036238596621682363064125408968262481 [1.036e36], 9451516093014723091614266916116585132223652748124480594 [9.451e54])
+    ├─ [2851] LendingPool::getCollateral(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a]) [staticcall]
+    │   └─ ← [Return] 0
+    └─ ← [Stop]
+
+  [44390] Handler::depositCollateral(8306, 8000)
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 8306}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 8306)
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [45003] Handler::depositCollateral(1, 862729337094222787 [8.627e17])
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 1001}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 1001)
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [45621] Handler::depositCollateral(115792089237316195423570985008687907853269984665640564039457584007913129639935 [1.157e77], 1042212112912568269496702957562336008014850134594228439374 [1.042e57])
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 10000000000000000000}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 10000000000000000000 [1e19])
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [44390] Handler::depositCollateral(2920, 1000)
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 2920}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 2920)
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [13543] Handler::borrow(1, 5000)
+    ├─ [2851] LendingPool::getCollateral(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a]) [staticcall]
+    │   └─ ← [Return] 0
+    └─ ← [Stop]
+
+  [44390] Handler::depositCollateral(7899, 8000)
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 7899}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 7899)
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [45861] Handler::depositCollateral(38012675714475299545794390164797093600711 [3.801e40], 619940797267 [6.199e11])
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 694040879897592385}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 694040879897592385 [6.94e17])
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [45861] Handler::depositCollateral(4693373553480160745337565371971092961994255387340378000884868672950 [4.693e66], 6206744497502163915457711082163222837553649360167782707502950990904916732 [6.206e72])
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 6284287975016800471}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 6284287975016800471 [6.284e18])
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [45003] Handler::depositCollateral(0, 127544361870689247133725900903 [1.275e29])
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 1000}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 1000)
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [13543] Handler::borrow(5000, 0)
+    ├─ [2851] LendingPool::getCollateral(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a]) [staticcall]
+    │   └─ ← [Return] 0
+    └─ ← [Stop]
+
+  [44390] Handler::depositCollateral(65843753822667460 [6.584e16], 11979373412 [1.197e10])
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 65843753822667460}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 65843753822667460 [6.584e16])
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [44390] Handler::depositCollateral(4488146631476366016 [4.488e18], 89891773428675918722406926618234544185039388319703491097190940505320221753596 [8.989e76])
+    ├─ [0] VM::prank(user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a])
+    │   └─ ← [Return]
+    ├─ [24175] LendingPool::depositCollateral{value: 4488146631476366016}()
+    │   ├─ emit CollateralDeposited(user: user: [0xD903c41B4049510De19d6ddE1ffe23E422039c8a], amount: 4488146631476366016 [4.488e18])
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [253] Invariants::invariant_prueba()
+    └─ ← [Stop]
+
+Suite result: ok. 1 passed; 0 failed; 0 skipped; finished in 36.35s (36.34s CPU time)
+
+Ran 1 test suite in 36.84s (36.35s CPU time): 1 tests passed, 0 failed, 0 skipped (1 total tests)

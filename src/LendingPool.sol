@@ -19,11 +19,12 @@ contract LendingPool {
     error LendingPool__HealthFactorBroken();
     error LendingPool__LendingExceedTheMaximum();
     error LendingPool__AmountToRepayGreatherThanCurrentDebt();
-    error LendingPool__TransferFailed();
     error LendingPool__YourLiquidationAmountExceedTheLimits();
     error LendingPool__YourCanNotRedeemMoreThanYouHave();
     error LendingPool__AutoliquidationNotAllowed();
     error LendingPool__HealthFactorNotImproved();
+    error LendingPool__HealthFactorOK();
+    error LendingPool__NoCollateral();
 
     uint256 private constant BPS_PRECISION = 10_000;
     uint256 private constant LTV_BPS = 7500;
@@ -63,22 +64,21 @@ contract LendingPool {
             revert LendingPool__AmountToWithdrawGreaterThanCollateral();
         }
 
-        collateral -= _amount;
-        collateralETH[msg.sender] = collateral;
+        _redeemCollateral(msg.sender, msg.sender, _amount);
 
-        _checkHealthFactor(collateral, debt);
+        _checkHealthFactor(collateral - _amount, debt);
 
         //depositToken.burn(msg.sender, _amount); //Esto aqui tampoco
-        (bool succeed,) = payable(msg.sender).call{value: _amount}("");
-        if (!succeed) {
-            revert LendingPool__TransactionRevert();
-        }
 
         emit CollateralWithdrawn(msg.sender, _amount);
     }
 
     function borrow(uint256 _amount) public {
         uint256 collateral = collateralETH[msg.sender];
+        if (collateral == 0) {
+            revert LendingPool__NoCollateral();
+        }
+
         uint256 debt = debtUSDC[msg.sender];
 
         debt += _amount;
@@ -100,7 +100,7 @@ contract LendingPool {
 
         bool succeed = IERC20(usdcToken).transferFrom(msg.sender, address(this), _amount);
         if (!succeed) {
-            revert LendingPool__TransferFailed();
+            revert LendingPool__TransactionRevert();
         }
     }
 
@@ -112,6 +112,10 @@ contract LendingPool {
         uint256 collateral = collateralETH[_borrower];
         uint256 debt = debtUSDC[_borrower];
         uint256 prevHealthFactor = _getHealthFactor(collateral, debt);
+
+        if (prevHealthFactor >= MIN_HEALTHFACTOR) {
+            revert LendingPool__HealthFactorOK();
+        }
 
         uint256 closeFactor = debt * CLOSE_FACTOR_BPS / BPS_PRECISION;
         if (_debtToCover > closeFactor) {
@@ -126,16 +130,34 @@ contract LendingPool {
         debtUSDC[_borrower] -= _debtToCover;
 
         _redeemCollateral(_borrower, msg.sender, collateralToRedeem);
+
+        //Añadir que el liquidador pague al protocolo la deuda en USDC
+        bool succeed = IERC20(usdcToken).transferFrom(msg.sender, address(this), _debtToCover);
+        if (!succeed) {
+            revert LendingPool__TransactionRevert();
+        }
+
         uint256 currentHealthFactor = _getHealthFactor(collateral - collateralToRedeem, debt - _debtToCover);
         if (currentHealthFactor <= prevHealthFactor) {
             revert LendingPool__HealthFactorNotImproved();
         }
     }
 
+    ////////////////
+    //public view//
+    //////////////
+
     function getCollateral(address _user) public view returns (uint256) {
         return collateralETH[_user];
     }
 
+    function getHealthFactor(address _user) public view returns (uint256) {
+        return _getHealthFactor(collateralETH[_user], debtUSDC[_user]);
+    }
+
+    /**
+     * Get the user USDC debt in USDC
+     */
     function getDebt(address _user) public view returns (uint256) {
         return debtUSDC[_user];
     }
@@ -152,14 +174,23 @@ contract LendingPool {
         return _getTokenAmountFromUsd(_token, _usdValue);
     }
 
+    function getMaxLending(uint256 _collateral) public view returns (uint256) {
+        return _getMaxLending(_collateral);
+    }
+
     ////////////
     //private//
     //////////
-    function _checkMaxLending(uint256 _collateral, uint256 _debt) private view {
+    function _getMaxLending(uint256 _collateral) private view returns (uint256) {
         uint256 collateralValueInUsd = _getUsdValue(address(0), _collateral);
+
+        return HealthFactor.maxToBorrowInUsd(collateralValueInUsd, LTV_BPS);
+    }
+
+    function _checkMaxLending(uint256 _collateral, uint256 _debt) private view {
         uint256 debtValueInUsd = _getUsdValue(address(usdcToken), _debt);
 
-        uint256 maxToBorrowInUsd = HealthFactor.maxToBorrowInUsd(collateralValueInUsd, LTV_BPS);
+        uint256 maxToBorrowInUsd = _getMaxLending(_collateral);
 
         if (debtValueInUsd > maxToBorrowInUsd) {
             revert LendingPool__LendingExceedTheMaximum();
@@ -204,15 +235,17 @@ contract LendingPool {
     }
 
     function _redeemCollateral(address _from, address _to, uint256 _amount) private {
-        if (_amount > collateralETH[_from]) {
+        uint256 collateral = collateralETH[_from];
+        if (_amount > collateral) {
             revert LendingPool__YourCanNotRedeemMoreThanYouHave();
         }
 
-        collateralETH[_from] -= _amount;
+        collateral -= _amount;
+        collateralETH[_from] = collateral;
         (bool succeed,) = payable(_to).call{value: _amount}(""); //PROTECT WITH NON REENTRANT!!!
 
         if (!succeed) {
-            revert LendingPool__TransferFailed();
+            revert LendingPool__TransactionRevert();
         }
     }
 }

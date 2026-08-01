@@ -9,7 +9,7 @@ pragma solidity ^0.8.0;
  * aggregator contract, but how the aggregator got
  * its answer is unimportant
  */
-contract MockAggregatorV3Interface {
+contract MockAggregatorV3 {
     uint256 public constant version = 0;
 
     uint8 public decimals;
