@@ -20,7 +20,7 @@ contract LendingPool {
     error LendingPool__LendingExceedTheMaximum();
     error LendingPool__AmountToRepayGreatherThanCurrentDebt();
     error LendingPool__YourLiquidationAmountExceedTheLimits();
-    error LendingPool__YourCanNotRedeemMoreThanYouHave();
+    error LendingPool__YouCanNotRedeemMoreThanYouHave();
     error LendingPool__AutoliquidationNotAllowed();
     error LendingPool__HealthFactorNotImproved();
     error LendingPool__HealthFactorOK();
@@ -237,7 +237,7 @@ contract LendingPool {
     function _redeemCollateral(address _from, address _to, uint256 _amount) private {
         uint256 collateral = collateralETH[_from];
         if (_amount > collateral) {
-            revert LendingPool__YourCanNotRedeemMoreThanYouHave();
+            revert LendingPool__YouCanNotRedeemMoreThanYouHave();
         }
 
         collateral -= _amount;

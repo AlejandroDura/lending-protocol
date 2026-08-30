@@ -50,5 +50,7 @@ contract Invariants is StdInvariant, Test {
         targetContract(address(handler));
     }
 
-    function invariant_prueba() public {}
+    function invariant_prueba() public {
+        assertTrue(false);
+    }
 }
