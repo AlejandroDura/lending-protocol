@@ -38,7 +38,7 @@ contract LendingPoolTest is Test {
         // deployer = new DeployLendingPool();
         // (lendingPool, priceOracle, config) = deployer.run();
 
-        staking = new StakingRewards();
+        staking = new StakingRewards(address(this));
 
         //usdcToken = ERC20Mock(config.getNetworkConfig().usdc);
     }
@@ -59,8 +59,7 @@ contract LendingPoolTest is Test {
 
         uint256 expectedPrice = 1000000000000000000;
 
-        vm.prank(userA);
-        staking.addLiquidity(5000e6);
+        staking.addLiquidity(userA, 5000e6);
 
         assertEq(staking.getLiquidity(), 5000e6, "LIQUIDITY FAILED");
         assertEq(staking.getNav(), 5000e6, "NAV FAILED");
@@ -321,9 +320,8 @@ contract LendingPoolTest is Test {
         _addETHRewards(1 ether);
         _addLiquidity(5000e6, userB);
 
-        vm.prank(userB);
         vm.expectRevert(StakingRewards.StakingRewards__NoRewardsToClaim.selector);
-        staking.claim();
+        staking.claim(userB);
 
         assertEq(staking.getAccTotalETHRewardsPerShare(), expectedTotalAccETHRewardsPerShare);
         assertEq(staking.getUserAccETHRewardsPerShare(userB), expectedTotalAccETHRewardsPerShare);
@@ -353,9 +351,8 @@ contract LendingPoolTest is Test {
         _addLiquidity(10000e6, userA);
         _addETHRewards(1 ether);
 
-        vm.prank(userA);
         //vm.expectRevert(StakingRewards.StakingRewards__NoRewardsToClaim.selector);
-        staking.claim();
+        staking.claim(userA);
 
         assertEq(staking.getAccTotalETHRewardsPerShare(), expectedTotalAccETHRewardsPerShare);
         assertEq(staking.getUserAccETHRewardsPerShare(userA), expectedTotalAccETHRewardsPerShare);
@@ -364,23 +361,19 @@ contract LendingPoolTest is Test {
     }
 
     function _addLiquidity(uint256 _amount, address _user) private {
-        vm.prank(_user);
-        staking.addLiquidity(_amount);
+        staking.addLiquidity(_user, _amount);
     }
 
     function _removeLiquidity(uint256 _shares, address _user) private {
-        vm.prank(_user);
-        staking.removeLiquidity(_shares);
+        staking.removeLiquidity(_user, _shares);
     }
 
     function _lend(uint256 _amount, address _user) private {
-        vm.prank(_user);
-        staking.lend(_amount);
+        staking.lend(_user, _amount);
     }
 
     function _repay(uint256 _amount, address _user) private {
-        vm.prank(_user);
-        staking.repay(_amount);
+        staking.repay(_user, _amount);
     }
 
     function _addETHRewards(uint256 _rewards) private {

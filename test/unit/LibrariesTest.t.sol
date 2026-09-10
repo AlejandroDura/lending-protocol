@@ -2,7 +2,7 @@
 pragma solidity ^0.8.13;
 
 import {Test} from "forge-std/Test.sol";
-import {HealthFactor} from "src/libraries/HealthFactor.sol";
+import {Calculations} from "src/libraries/Calculations.sol";
 
 contract LendingPoolTest is Test {
     address user;
@@ -15,7 +15,7 @@ contract LendingPoolTest is Test {
     function test_collateralValueInUsd() public {
         uint256 collateral = 0.5 ether;
         uint256 price = 3000e18;
-        assertEq(HealthFactor.collateralValueInUsd(collateral, price), 1500e18);
+        assertEq(Calculations.collateralValueInUsd(collateral, price), 1500e18);
     }
 
     function test_maxToBorrowInUsd() public {
@@ -24,7 +24,7 @@ contract LendingPoolTest is Test {
 
         uint256 expected = 3750e18;
 
-        assertEq(HealthFactor.maxToBorrowInUsd(collateralValue, ltv), expected);
+        assertEq(Calculations.maxToBorrowInUsd(collateralValue, ltv), expected);
     }
 
     function test_calculateHealthFactor() public {
@@ -37,7 +37,7 @@ contract LendingPoolTest is Test {
          * HF = 5600 / 2500 = 2.24
          */
         uint256 expectedValue = 2.24e18;
-        assertEq(HealthFactor.calculateHealthFactor(debtValue, collateralValue, liquidationThreshold), expectedValue);
+        assertEq(Calculations.calculateHealthFactor(debtValue, collateralValue, liquidationThreshold), expectedValue);
     }
 
     function test_healthFactorPeriodicDecimals() public {
@@ -52,6 +52,6 @@ contract LendingPoolTest is Test {
         uint256 liquidationThreshold = 8000; //80%
 
         uint256 expectedValue = 1333333333333333333;
-        assertEq(HealthFactor.calculateHealthFactor(debtValue, collateralValue, liquidationThreshold), expectedValue);
+        assertEq(Calculations.calculateHealthFactor(debtValue, collateralValue, liquidationThreshold), expectedValue);
     }
 }

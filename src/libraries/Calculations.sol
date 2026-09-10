@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.13;
 
-library HealthFactor {
+library Calculations {
     function collateralValueInUsd(uint256 _collateralETH, uint256 _ethPrice) internal pure returns (uint256) {
         return _collateralETH * _ethPrice / 1e18;
     }

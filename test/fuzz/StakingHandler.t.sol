@@ -37,8 +37,7 @@ contract StakingHandler is Test {
         address supplier = _getSupplier(_userSeed);
         uint256 amountBounded = bound(_amount, 0.1e6, MAX_ADD_LIQUIDITY);
 
-        vm.prank(supplier);
-        staking.addLiquidity(amountBounded);
+        staking.addLiquidity(supplier, amountBounded);
     }
 
     function lend(uint256 _amount, uint256 _userSeed) public {
@@ -59,8 +58,7 @@ contract StakingHandler is Test {
         uint256 prevPrice = staking.getSharePrice();
 
         address borrower = _getBorrower(_userSeed);
-        vm.prank(borrower);
-        staking.lend(amountBounded);
+        staking.lend(borrower, amountBounded);
         ghost_borrowerDebt[borrower] += amountBounded;
 
         uint256 postNav = staking.getNav();
@@ -78,8 +76,7 @@ contract StakingHandler is Test {
             return;
         }
 
-        vm.prank(borrower);
-        staking.repay(amountRepay);
+        staking.repay(borrower, amountRepay);
         ghost_borrowerDebt[borrower] -= amountRepay;
     }
 
@@ -96,8 +93,7 @@ contract StakingHandler is Test {
             return;
         }
 
-        vm.prank(supplier);
-        staking.removeLiquidity(shares);
+        staking.removeLiquidity(supplier, shares);
     }
 
     ////////////////
@@ -117,8 +113,12 @@ contract StakingHandler is Test {
             return;
         }
 
+        uint256 prevAccRewards = staking.getAccTotalETHRewardsPerShare();
         staking.addETHRewards{value: amountBounded}();
         ghost_totalRewards += amountBounded;
+        uint256 postAccRewards = staking.getAccTotalETHRewardsPerShare();
+
+        assertGt(postAccRewards, prevAccRewards, "Accumulated rewards per share increment failed!!!");
     }
 
     function claim(uint256 _userSeed) public {
@@ -129,8 +129,7 @@ contract StakingHandler is Test {
             return;
         }
 
-        vm.prank(supplier);
-        staking.claim();
+        staking.claim(supplier);
         ghost_supplierRewardsClaimed[supplier] += amountToClaim;
     }
 

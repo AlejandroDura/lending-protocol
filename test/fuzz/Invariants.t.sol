@@ -13,6 +13,8 @@ import {IERC20Metadata} from "@openzeppelin/contracts/token/ERC20/extensions/IER
 import {DeployLendingPool} from "script/DeployLendingPool.s.sol";
 import {HelperConfig} from "script/HelperConfig.s.sol";
 import {Handler} from "test/fuzz/Handler.t.sol";
+import {RewardController} from "src/RewardController.sol";
+import {StakingRewards} from "src/StakingRewards.sol";
 
 contract Invariants is StdInvariant, Test {
     address[] public users;
@@ -24,6 +26,8 @@ contract Invariants is StdInvariant, Test {
     DeployLendingPool public deployer;
     HelperConfig config;
     LendingPool public lendingPool;
+    RewardController public rewardController;
+    StakingRewards public staking;
     DepositToken public depositToken;
     PriceOracle public priceOracle;
     ERC20Mock public usdcToken;
@@ -41,7 +45,7 @@ contract Invariants is StdInvariant, Test {
         vm.deal(liquidator, 1_000_000 ether);
 
         deployer = new DeployLendingPool();
-        (lendingPool, priceOracle, config) = deployer.run();
+        (lendingPool, rewardController, staking, priceOracle, config) = deployer.run();
 
         usdcToken = ERC20Mock(config.getNetworkConfig().usdc);
         usdcToken.mint(address(lendingPool), 1_000_000e6);

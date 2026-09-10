@@ -11,13 +11,16 @@ import {IERC20} from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import {IERC20Metadata} from "@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol";
 import {DeployLendingPool} from "script/DeployLendingPool.s.sol";
 import {HelperConfig} from "script/HelperConfig.s.sol";
+import {RewardController} from "src/RewardController.sol";
+import {StakingRewards} from "src/StakingRewards.sol";
 
 contract LendingPoolFuzz is Test {
-    uint256 constant MAX_DEPOSIT = 1 ether;
+    uint256 constant MAX_COLLATERAL = 1 ether;
     uint256 private constant MIN_HEALTHFACTOR = 1e18;
     uint256 private constant LIQUIDATOR_COMMISSION = 300;
 
     address[] public users;
+    address[] public borrowers;
 
     address[] public tokens;
     address[] public priceFeeds;
@@ -25,29 +28,32 @@ contract LendingPoolFuzz is Test {
     DeployLendingPool public deployer;
     HelperConfig config;
     LendingPool public lendingPool;
+    RewardController public rewardController;
+    StakingRewards public staking;
     DepositToken public depositToken;
     PriceOracle public priceOracle;
     ERC20Mock public usdcToken;
 
     function setUp() public {
-        for (uint256 i = 0; i < 5; i++) {
-            address user = makeAddr(string(abi.encodePacked("user", i)));
-            vm.deal(user, 1_000_000 ether);
-            users.push(user);
-        }
-
         deployer = new DeployLendingPool();
-        (lendingPool, priceOracle, config) = deployer.run();
+        (lendingPool, rewardController, staking, priceOracle, config) = deployer.run();
 
         usdcToken = ERC20Mock(config.getNetworkConfig().usdc);
         usdcToken.mint(address(lendingPool), 1_000_000e6);
+
+        for (uint256 i = 0; i < 5; i++) {
+            address user = makeAddr(string(abi.encodePacked("user", i)));
+            vm.deal(user, 1_000_000 ether);
+            usdcToken.mint(user, 1_000_000e6);
+            users.push(user);
+        }
     }
 
     function testFuzz_depositCollateral(uint256 _amount, uint256 _userSeed) public {
         address user = _getUserFromSeed(_userSeed);
-        uint256 amountBounded = bound(_amount, 1e10, MAX_DEPOSIT);
+        uint256 amountBounded = bound(_amount, 1e10, MAX_COLLATERAL);
 
-        console.log("YEEEEEEEEEEEE");
+        _addLiquidity(user, 10_000e6);
 
         vm.prank(user);
         lendingPool.depositCollateral{value: amountBounded}();
@@ -58,7 +64,9 @@ contract LendingPoolFuzz is Test {
     {
         address borrower = _getUserFromSeed(_userSeed);
         address liquidator = _getUserFromSeed(uint256(_userSeed) + 1);
+        address supplier = _getUserFromSeed(uint256(_userSeed) + 2);
 
+        _addLiquidity(supplier, 10_000e6);
         _depositCollateral(_depositAmount, borrower);
         _borrow(_borrowAmount, borrower);
 
@@ -91,7 +99,7 @@ contract LendingPoolFuzz is Test {
     }
 
     function _depositCollateral(uint256 _amount, address _user) private {
-        uint256 amountBounded = bound(_amount, 1e10, MAX_DEPOSIT);
+        uint256 amountBounded = bound(_amount, 1e10, MAX_COLLATERAL);
 
         vm.prank(_user);
         lendingPool.depositCollateral{value: amountBounded}();
@@ -148,5 +156,12 @@ contract LendingPoolFuzz is Test {
         ERC20Mock(_token).mint(_user, _amount);
         vm.prank(_user);
         ERC20Mock(_token).approve(_spender, _amount);
+    }
+
+    function _addLiquidity(address _user, uint256 _amount) private {
+        vm.startPrank(_user);
+        usdcToken.approve(address(lendingPool), _amount);
+        lendingPool.addLiquidity(_amount);
+        vm.stopPrank();
     }
 }

@@ -35,8 +35,9 @@ contract StakingInvariants is StdInvariant, Test {
             borrowers.push(borrower);
         }
 
-        staking = new StakingRewards();
+        staking = new StakingRewards(address(this));
         handler = new StakingHandler(staking, suppliers, borrowers);
+        staking.transferOwnership(address(handler));
         targetContract(address(handler));
         //targetContract(address(staking));
         // bytes4[] memory selectors = new bytes4[](1);

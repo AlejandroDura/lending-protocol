@@ -5,11 +5,12 @@ import {PriceOracle} from "./PriceOracle.sol";
 import {DepositToken} from "src/tokens/DepositToken.sol";
 import {IERC20} from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import {IERC20Metadata} from "@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol";
-import {HealthFactor} from "src/libraries/HealthFactor.sol";
+import {Calculations} from "src/libraries/Calculations.sol";
 import {ReentrancyGuard} from "@openzeppelin/contracts/utils/ReentrancyGuard.sol";
 import {console} from "forge-std/console.sol";
+import {Ownable} from "@openzeppelin/contracts/access/Ownable.sol";
 
-contract StakingRewards is ReentrancyGuard {
+contract StakingRewards is ReentrancyGuard, Ownable {
     struct UserInfo {
         uint256 accETHRewardsPerShare;
         uint256 shares;
@@ -37,14 +38,19 @@ contract StakingRewards is ReentrancyGuard {
 
     uint256 private accTotalETHRewardsPerShare;
 
-    constructor() {}
+    constructor(address _initialOwner) Ownable(_initialOwner) {}
 
-    function addLiquidity(uint256 _amount) external {
+    /**
+     * Add liquidity to the system in USDC.
+     * @param _supplier user supplier address.
+     * @param _amount amount in USDC to stake.
+     */
+    function addLiquidity(address _supplier, uint256 _amount) external onlyOwner {
         //Pasa algo si laliquidez cae a 0 y luego se empieza de 0?
-        _updateUserRewards();
+        _updateUserRewards(_supplier);
         uint256 shares = _calculateShares(_amount);
 
-        _updateShares(shares, true);
+        _updateShares(_supplier, shares, true);
         _updateLiquidity(_amount, true, true);
     }
 
@@ -52,16 +58,22 @@ contract StakingRewards is ReentrancyGuard {
     //USDC STAKE//
     /////////////
 
-    function removeLiquidity(uint256 _shares) external {
+    /**
+     * Remove/unstake liquidity from the system.
+     * @param _supplier user supplier address.
+     * @param _shares shares to unstake/remove/retrieve.
+     * @return res USDC token amount retrieved/unstaked
+     */
+    function removeLiquidity(address _supplier, uint256 _shares) external onlyOwner returns (uint256) {
         if (totalShares == 0) {
             revert StakingRewards__NoUsdcLiquidityInTheSystem();
         }
 
-        if (_shares > userInfo[msg.sender].shares) {
+        if (_shares > userInfo[_supplier].shares) {
             revert StakingRewards__InvalidLiquidityToRemove();
         }
 
-        _updateUserRewards();
+        _updateUserRewards(_supplier);
 
         //Hacer el claim en una funcion aparte.
         uint256 usdcClaimed = _shares * nav / totalShares;
@@ -70,11 +82,20 @@ contract StakingRewards is ReentrancyGuard {
             revert StakingRewards__ThereIsNotEnoughLiquidityAvailable();
         }
 
-        _updateShares(_shares, false);
+        _updateShares(_supplier, _shares, false);
         _updateLiquidity(usdcClaimed, false, true);
+
+        return usdcClaimed;
     }
 
-    function lend(uint256 _amountToLend) external {
+    /**
+     * Funtion used to borrow USDC. It reduces the liquidity and updates the nav because the fees.
+     * The accountability is measured by the usdc liquidity and nav variables. We dont really need
+     * the borrower user because we does not track each user debt here and its not necessary.
+     * @param _borrower user borrower address.
+     * @param _amountToLend amount to borrow/lend.
+     */
+    function lend(address _borrower, uint256 _amountToLend) external onlyOwner returns (uint256) {
         if (usdcLiquidity == 0) {
             revert StakingRewards__NoLiquidityInTheSystem();
         }
@@ -82,9 +103,16 @@ contract StakingRewards is ReentrancyGuard {
         uint256 amountWithFee = _amountToLend * (BPS_PRECISION - LEND_FEE_BPS) / BPS_PRECISION;
         _updateLiquidity(amountWithFee, false, false);
         _updateNav(_amountToLend - amountWithFee, true);
+
+        return amountWithFee;
     }
 
-    function repay(uint256 _amountToRepay) external {
+    /**
+     * Function used to repay or return the lended USDC.
+     * @param _borrower user borrower address.
+     * @param _amountToRepay USDC amount to return or repay.
+     */
+    function repay(address _borrower, uint256 _amountToRepay) external onlyOwner {
         //COmprabar que el ususario tiene deuda
         _updateLiquidity(_amountToRepay, true, false);
     }
@@ -92,20 +120,28 @@ contract StakingRewards is ReentrancyGuard {
     //////////////
     //ETH STAKE//
     ////////////
-    function addETHRewards() external payable {
+
+    /**
+     * Function used to add ETH rewards in the system.
+     */
+    function addETHRewards() external payable onlyOwner {
         _updateRewards(msg.value);
     }
 
-    function claim() external nonReentrant {
-        _updateUserRewards();
+    /**
+     * Function used to claim accumulated ETH rewards.
+     * @param _supplier Supplier user address. The supplier that wants to claim their rewards.
+     */
+    function claim(address _supplier) external nonReentrant onlyOwner {
+        _updateUserRewards(_supplier);
 
-        uint256 pendingRewards = userInfo[msg.sender].pending;
+        uint256 pendingRewards = userInfo[_supplier].pending;
         if (pendingRewards == 0) {
             revert StakingRewards__NoRewardsToClaim();
         }
 
-        userInfo[msg.sender].pending = 0;
-        (bool success,) = payable(msg.sender).call{value: pendingRewards}("");
+        userInfo[_supplier].pending = 0;
+        (bool success,) = payable(_supplier).call{value: pendingRewards}("");
 
         if (!success) {
             revert StakingRewards__TransactionRevert();
@@ -164,10 +200,10 @@ contract StakingRewards is ReentrancyGuard {
         accTotalETHRewardsPerShare += _rewards * EIGHTEEN_PRECISION / totalShares;
     }
 
-    function _updateUserRewards() private {
-        uint256 accRewardsPerShare = accTotalETHRewardsPerShare - userInfo[msg.sender].accETHRewardsPerShare;
-        userInfo[msg.sender].pending += accRewardsPerShare * userInfo[msg.sender].shares / EIGHTEEN_PRECISION;
-        userInfo[msg.sender].accETHRewardsPerShare = accTotalETHRewardsPerShare;
+    function _updateUserRewards(address _supplier) private {
+        uint256 accRewardsPerShare = accTotalETHRewardsPerShare - userInfo[_supplier].accETHRewardsPerShare;
+        userInfo[_supplier].pending += accRewardsPerShare * userInfo[_supplier].shares / EIGHTEEN_PRECISION;
+        userInfo[_supplier].accETHRewardsPerShare = accTotalETHRewardsPerShare;
     }
 
     function _getSharePrice() private returns (uint256) {
@@ -182,8 +218,8 @@ contract StakingRewards is ReentrancyGuard {
         return _amount * totalShares / nav;
     }
 
-    function _updateShares(uint256 _amount, bool add) private {
-        uint256 userShares_c = userInfo[msg.sender].shares;
+    function _updateShares(address _supplier, uint256 _amount, bool add) private {
+        uint256 userShares_c = userInfo[_supplier].shares;
         uint256 totalShares_c = totalShares;
 
         if (_amount > userShares_c && !add) {
@@ -198,7 +234,7 @@ contract StakingRewards is ReentrancyGuard {
             totalShares_c -= _amount;
         }
 
-        userInfo[msg.sender].shares = userShares_c;
+        userInfo[_supplier].shares = userShares_c;
         totalShares = totalShares_c;
     }
 
