@@ -1,66 +1,33 @@
-## Foundry
+# **SimpleDAO Security & Gas Optimizations audit**
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+## 📌 Overview
 
-Foundry consists of:
+This project consists of a lending pool with staking rewards. It allows you to borrow USDC by posting ETH as collateral. It also allows you to add USDC to the protocol in order to create liquidity in the system and allow
+other users to take USDC borrowed. Those who deposit USDC to create liquidity, will receive USDC rewards relative to
+their staked amounts. They can also earn rewards in ETH, thanks to the fee charged to borrowers against their ETH collateral.
 
-- **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
-- **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
-- **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
-- **Chisel**: Fast, utilitarian, and verbose solidity REPL.
+## 🛠 Tech Stack
 
-## Documentation
+- Solidity ^0.8.18
+- Foundry
+- Forge
+- OpenZeppelin
 
-https://book.getfoundry.sh/
+## 📂 Project Structure
 
-## Usage
+**- src/ ->** You can find the LendingPool.sol where all the lending logic is located and also the StakingRewards.sol where the staking and rewards accounting is taking place.
 
-### Build
+**- test/ ->** Unit, fuzzing and invariant tests from both LendingPool.sol and StakingRewards.sol contracts. Also libraries tests.
 
-```shell
-$ forge build
-```
+## 🎯 Learning Objectives
 
-### Test
-
-```shell
-$ forge test
-```
-
-### Format
-
-```shell
-$ forge fmt
-```
-
-### Gas Snapshots
-
-```shell
-$ forge snapshot
-```
-
-### Anvil
-
-```shell
-$ anvil
-```
-
-### Deploy
-
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
-```
-
-### Cast
-
-```shell
-$ cast <subcommand>
-```
-
-### Help
-
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
-```
+- Secure programming practices.
+- Secure mindset.
+- Security concerns.
+- Knowledge about Solidity smart contract vulnerabilities (reentrancy, access control...).
+- Mixture of scalability and architectural practices, ensuring at the same time security.
+- Solidity best practices.
+- User roles and privileges.
+- Mathematical economics.
+- Solidity arithmetic.
+- Economic protocols
