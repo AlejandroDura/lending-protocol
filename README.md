@@ -1,4 +1,4 @@
-# **SimpleDAO Security & Gas Optimizations audit**
+# **Lending pool protocol**
 
 ## 📌 Overview
 
